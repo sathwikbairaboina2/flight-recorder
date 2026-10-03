@@ -1,3 +1,6 @@
+import sqlite3
+import urllib.parse
+
 import pytest
 from fastapi.testclient import TestClient
 
@@ -88,3 +91,42 @@ def test_error_codes(client, read_only_client):
     )
     assert read_only_client.get("/api/graph").status_code == 404
     assert client.get("/api/graph").json()["nodes"][1] == "plan"
+
+
+def _client_with_thread_id(sample_db, tmp_path, new_id):
+    with sqlite3.connect(sample_db) as conn:
+        for table in ("checkpoints", "writes"):
+            conn.execute(f"UPDATE {table} SET thread_id = ? WHERE thread_id = 'lisbon-bug'", (new_id,))
+    snap = Snapshot(sample_db)
+    store = ScratchStore(tmp_path / "scratch.sqlite")
+    builder = load_builder("flight_recorder.samples:graph")
+    app = create_app(Reader(snap, store), ForkEngine(builder, store, snap.source_sha256()), topology(builder))
+    return TestClient(app), store, snap
+
+
+@pytest.mark.parametrize("thread_id", ["org/user-42", "a?b#c"])
+def test_thread_ids_with_url_special_characters(sample_db, tmp_path, thread_id):
+    client, store, snap = _client_with_thread_id(sample_db, tmp_path, thread_id)
+    try:
+        quoted = urllib.parse.quote(thread_id, safe="")
+        rows = client.get(f"/api/threads/{quoted}/checkpoints").json()
+        assert len(rows) == 5
+        cid = rows[1]["checkpoint_id"]
+        assert client.get(f"/api/threads/{quoted}/checkpoints/{cid}").status_code == 200
+        res = client.post("/api/forks", json={"thread_id": thread_id, "checkpoint_id": cid, "values": {}})
+        assert res.status_code == 200
+        fork_tid = res.json()["thread_id"]
+        assert client.get(f"/api/threads/{urllib.parse.quote(fork_tid, safe='')}/checkpoints").status_code == 200
+    finally:
+        store.close()
+        snap.close()
+
+
+def test_unknown_as_node_is_422_and_leaves_no_fork(client):
+    cid = client.get("/api/threads/lisbon-bug/checkpoints").json()[1]["checkpoint_id"]
+    before = {t["thread_id"] for t in client.get("/api/threads").json()}
+    res = client.post(
+        "/api/forks", json={"thread_id": "lisbon-bug", "checkpoint_id": cid, "values": {}, "as_node": "nope"}
+    )
+    assert res.status_code == 422
+    assert {t["thread_id"] for t in client.get("/api/threads").json()} == before

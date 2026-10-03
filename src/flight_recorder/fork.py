@@ -50,6 +50,7 @@ def _cfg(thread_id: str, checkpoint_id: str | None = None, ns: str = "") -> dict
 class ForkEngine:
     def __init__(self, builder: StateGraph, scratch: ScratchStore, source_sha256: str) -> None:
         self.scratch = scratch
+        self._nodes = set(builder.nodes)
         self.graph = builder.compile(checkpointer=scratch.saver)
         self._source_sha256 = source_sha256
         self._real = JsonPlusSerializer()
@@ -77,10 +78,12 @@ class ForkEngine:
             update = from_json(values)
         except (ValueError, TypeError, ImportError, AttributeError) as exc:
             raise ForkError(f"cannot rebuild values: {exc}") from exc
+        if as_node is not None and as_node not in self._nodes:
+            raise ForkError(f"as_node {as_node!r} is not a node of the graph: {sorted(self._nodes)}")
         started = time.perf_counter()
         src_conn = sqlite3.connect(str(db), check_same_thread=False)
         try:
-            chain = self._ancestors(SqliteSaver(src_conn), thread_id, checkpoint_id)
+            chain = self._ancestors(SqliteSaver(src_conn, serde=self.scratch.saver.serde), thread_id, checkpoint_id)
         finally:
             src_conn.close()
         fork_id, fork_tid = new_fork_thread_id(taken | self.scratch.thread_ids())

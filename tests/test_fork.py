@@ -1,4 +1,7 @@
+import os
 import sqlite3
+import subprocess
+import sys
 
 import pytest
 from hypothesis import given, settings
@@ -109,3 +112,33 @@ def test_forced_clash_is_regenerated():
     ids = iter(["aaa", "aaa", "bbb"])
     fork_id, thread_id = new_fork_thread_id({"fork:aaa"}, make_id=lambda: next(ids))
     assert (fork_id, thread_id) == ("bbb", "fork:bbb")
+
+
+def test_fork_works_under_strict_msgpack(sample_db, tmp_path):
+    """LANGGRAPH_STRICT_MSGPACK=true blocks unregistered types unless the graph's own types are allowed."""
+    script = tmp_path / "strict_fork.py"
+    script.write_text(
+        "import sys\n"
+        "from flight_recorder.fork import ForkEngine\n"
+        "from flight_recorder.graph_loader import load_builder\n"
+        "from flight_recorder.reader import Reader\n"
+        "from flight_recorder.scratch import ScratchStore\n"
+        "from flight_recorder.snapshot import Snapshot\n"
+        "from flight_recorder.graph_loader import fork_serde\n"
+        "snap = Snapshot(sys.argv[1])\n"
+        "builder = load_builder('flight_recorder.samples:graph')\n"
+        "store = ScratchStore(sys.argv[2] + '/s.sqlite', serde=fork_serde(builder))\n"
+        "engine = ForkEngine(builder, store, snap.source_sha256())\n"
+        "reader = Reader(snap, store)\n"
+        "row = next(r for r in reader.checkpoints('lisbon-bug') if r['writes_from'] == ['plan'])\n"
+        "res = engine.fork(snap.path, 'lisbon-bug', row['checkpoint_id'], {}, None, set())\n"
+        "print(res['status'], res['error'])\n"
+    )
+    env = {**os.environ, "LANGGRAPH_STRICT_MSGPACK": "true"}
+    out = subprocess.run(
+        [sys.executable, str(script), str(sample_db), str(tmp_path)], env=env, capture_output=True, text=True
+    )
+    assert out.returncode == 0, out.stderr
+    assert out.stdout.strip() == "done None"
+    assert "Blocked deserialization" not in out.stderr
+    assert "Deserializing unregistered" not in out.stderr

@@ -27,7 +27,7 @@ export function App() {
   const [compareId, setCompareId] = useState<string | null>(null)
   const [mode, setMode] = useState<Mode>('state')
   const [states, setStates] = useState<Record<string, CheckpointState>>({})
-  const [stateError, setStateError] = useState<string | null>(null)
+  const [stateErrors, setStateErrors] = useState<Record<string, string>>({})
   const pendingCp = useRef<string | null>(initialParams().cp)
   const requested = useRef(new Set<string>())
 
@@ -100,10 +100,13 @@ export function App() {
       requested.current.add(k)
       api
         .state(tid, cid)
-        .then((s) => setStates((prev) => ({ ...prev, [k]: s })))
+        .then((s) => {
+          setStates((prev) => ({ ...prev, [k]: s }))
+          setStateErrors(({ [k]: _gone, ...rest }) => rest)
+        })
         .catch((e: Error) => {
           requested.current.delete(k)
-          setStateError(e.message)
+          setStateErrors((prev) => ({ ...prev, [k]: e.message }))
         })
     },
     [],
@@ -177,6 +180,7 @@ export function App() {
   }
 
   const selectedState = threadId && selectedId ? (states[keyOf(threadId, selectedId)] ?? null) : null
+  const stateError = threadId && selectedId ? (stateErrors[keyOf(threadId, selectedId)] ?? null) : null
   const baseState = threadId && baseId ? (states[keyOf(threadId, baseId)] ?? null) : null
   const label = (r: CheckpointRow | null) => (r ? `step ${r.step ?? '-'}` : '')
 

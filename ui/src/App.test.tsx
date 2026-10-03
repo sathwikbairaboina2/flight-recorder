@@ -6,7 +6,7 @@ import { App } from './App'
 type Fx = typeof fixture
 const fx = fixture as Fx & { checkpoints: Record<string, { checkpoint_id: string }[]>; states: Record<string, unknown> }
 
-function serve(health = fx.health) {
+function serve(health = fx.health, failCid: string | null = null) {
   vi.stubGlobal(
     'fetch',
     vi.fn(async (input: string) => {
@@ -18,6 +18,10 @@ function serve(health = fx.health) {
       else if (url.pathname === '/api/threads') body = fx.threads
       else if (url.pathname === '/api/graph') body = fx.graph
       else if (parts[4] === 'checkpoints' && parts.length === 5) body = fx.checkpoints[parts[3]]
+      else if (parts[4] === 'checkpoints' && parts.length === 6 && parts[5] === failCid) {
+        status = 500
+        body = { detail: 'boom' }
+      }
       else if (parts[4] === 'checkpoints' && parts.length === 6) body = fx.states[parts[5]]
       else status = 404
       return new Response(JSON.stringify(body), { status })
@@ -32,6 +36,18 @@ beforeEach(() => window.history.replaceState(null, '', '/?thread=lisbon-bug'))
 afterEach(() => vi.unstubAllGlobals())
 
 describe('App', () => {
+  it('a failed state fetch does not poison the other checkpoints', async () => {
+    const rows = rowsOf('lisbon-bug')
+    serve(fx.health, rows[rows.length - 1].checkpoint_id)
+    render(<App />)
+    await waitFor(() => expect(selectedRow()).toHaveAttribute('data-checkpoint-id', rows[rows.length - 1].checkpoint_id))
+    await waitFor(() => expect(screen.getByRole('alert')).toHaveTextContent('boom'))
+    act(() => void fireEvent.keyDown(window, { key: 'k' }))
+    await waitFor(() => expect(selectedRow()).toHaveAttribute('data-checkpoint-id', rows[rows.length - 2].checkpoint_id))
+    await waitFor(() => expect(screen.getByTestId('inspector')).toBeInTheDocument())
+    expect(screen.queryByRole('alert')).toBeNull()
+  })
+
   it('opens the thread from the url and shows its newest checkpoint', async () => {
     serve()
     render(<App />)

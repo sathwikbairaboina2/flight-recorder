@@ -11,6 +11,7 @@ A local time-travel debugger for LangGraph SQLite checkpoints. Step through a ru
 flight-recorder is not on PyPI yet. Build the wheel and install it:
 
 ```bash
+pnpm -C ui install && pnpm -C ui build   # the wheel serves the UI only if this ran first
 uv build
 uv tool install dist/langgraph_flight_recorder-0.1.0-py3-none-any.whl   # or: pipx install <wheel>
 flight-recorder demo
@@ -104,7 +105,6 @@ The sidecar copies your database (and its WAL) into a temp folder and reads the 
 - No graph view, no export.
 - No forks inside subgraphs.
 - `builder.compile` drops compile options set on your compiled graph.
-- LangGraph prints a "Deserializing unregistered type" warning on forks that use pydantic models. It is LangGraph's own warning.
 - Not on PyPI yet.
 
 ## Development

@@ -55,7 +55,13 @@ class Snapshot:
                 return False
             self.generation += 1
             self._copy()
+            self._prune()
             return True
+
+    def _prune(self) -> None:
+        """Drop copies older than the previous generation; that one stays for reads still in flight."""
+        for old in range(self.generation - 1):
+            shutil.rmtree(self._dir / f"gen{old}", ignore_errors=True)
 
     def source_sha256(self) -> str:
         h = hashlib.sha256()

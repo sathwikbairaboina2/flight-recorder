@@ -13,6 +13,7 @@ uv sync
 pnpm -C ui install
 pnpm -C ui build
 uv run flight-recorder demo
+# to package: run `pnpm -C ui build` before `uv build`, or the wheel has no UI
 ```
 
 Open http://127.0.0.1:5320/. Press `k` twice, `d`, `f`, change `depart_after` to `2026-11-01`, Run fork, Open fork.

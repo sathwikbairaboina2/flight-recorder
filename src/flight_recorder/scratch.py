@@ -6,6 +6,7 @@ import sqlite3
 import threading
 from pathlib import Path
 
+from langgraph.checkpoint.serde.jsonplus import JsonPlusSerializer
 from langgraph.checkpoint.sqlite import SqliteSaver
 
 _FORKS_DDL = """
@@ -25,12 +26,12 @@ CREATE TABLE IF NOT EXISTS fr_forks (
 class ScratchStore:
     """The scratch SQLite database: SqliteSaver tables plus fr_forks."""
 
-    def __init__(self, path: str | Path) -> None:
+    def __init__(self, path: str | Path, serde: JsonPlusSerializer | None = None) -> None:
         self.path = Path(path)
         self.path.parent.mkdir(parents=True, exist_ok=True)
         self.lock = threading.Lock()
         self.conn = sqlite3.connect(str(self.path), check_same_thread=False)
-        self.saver = SqliteSaver(self.conn)
+        self.saver = SqliteSaver(self.conn, serde=serde)
         self.saver.setup()
         self.conn.execute(_FORKS_DDL)
         self.conn.commit()

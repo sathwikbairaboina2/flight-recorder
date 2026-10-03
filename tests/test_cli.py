@@ -57,3 +57,13 @@ def test_version(capsys):
         main(["--version"])
     assert exc.value.code == 0
     assert "flight-recorder 0.1.0" in capsys.readouterr().out
+
+
+def test_build_app_warns_when_the_ui_is_missing(sample_db, tmp_path, monkeypatch, capsys):
+    from flight_recorder import cli
+
+    monkeypatch.setattr(cli, "STATIC_DIR", tmp_path / "no-static")
+    _app, closers = cli.build_app(str(sample_db), None, None)
+    for close in closers:
+        close()
+    assert "no UI" in capsys.readouterr().err

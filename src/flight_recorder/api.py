@@ -37,14 +37,14 @@ def create_app(
     def threads() -> list[dict]:
         return reader.threads()
 
-    @app.get("/api/threads/{thread_id}/checkpoints")
+    @app.get("/api/threads/{thread_id:path}/checkpoints")
     def checkpoints(thread_id: str, ns: str = "") -> list[dict]:
         try:
             return reader.checkpoints(thread_id, ns)
         except NotFound as exc:
             raise HTTPException(404, str(exc)) from exc
 
-    @app.get("/api/threads/{thread_id}/checkpoints/{checkpoint_id}")
+    @app.get("/api/threads/{thread_id:path}/checkpoints/{checkpoint_id}")
     def state(thread_id: str, checkpoint_id: str, ns: str = "") -> dict:
         try:
             return reader.state(thread_id, checkpoint_id, ns)

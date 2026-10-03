@@ -64,7 +64,7 @@ def build_app(db: str, graph: str | None, scratch: str | None) -> tuple[Any, lis
     """Create the FastAPI app. Returns (app, closers)."""
     from .api import create_app
     from .fork import ForkEngine
-    from .graph_loader import load_builder, topology
+    from .graph_loader import fork_serde, load_builder, topology
     from .reader import Reader
     from .scratch import ScratchStore
     from .snapshot import Snapshot
@@ -80,11 +80,16 @@ def build_app(db: str, graph: str | None, scratch: str | None) -> tuple[Any, lis
             tmp = Path(tempfile.mkdtemp(prefix="flight-recorder-scratch-"))
             scratch_path = tmp / "scratch.sqlite"
             closers.append(lambda: shutil.rmtree(tmp, ignore_errors=True))
-        store = ScratchStore(scratch_path)
+        store = ScratchStore(scratch_path, serde=fork_serde(builder))
         closers.insert(0, store.close)
         engine = ForkEngine(builder, store, snapshot.source_sha256())
         topo = topology(builder)
     reader = Reader(snapshot, store)
+    if not (STATIC_DIR / "index.html").is_file():
+        print(
+            f"warning: no UI at {STATIC_DIR}; serving the API only. Run `pnpm -C ui build` before packaging.",
+            file=sys.stderr,
+        )
     return create_app(reader, engine, topo, STATIC_DIR), closers
 
 

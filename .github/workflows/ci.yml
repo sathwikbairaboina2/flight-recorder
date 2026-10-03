@@ -56,6 +56,30 @@ jobs:
       - run: pnpm -C ui exec playwright install --with-deps chromium
       - run: pnpm -C ui e2e
 
+  wheel:
+    needs: [ui]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install uv==0.12.21
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - run: corepack enable
+      - run: pnpm -C ui install --frozen-lockfile
+      - run: pnpm -C ui build
+      - run: uv build --wheel
+      - name: wheel contains the UI
+        run: python -c "import glob,sys,zipfile; z=zipfile.ZipFile(glob.glob('dist/*.whl')[0]); sys.exit(0 if 'flight_recorder/static/index.html' in z.namelist() else 'wheel has no UI')"
+      - name: install into a fresh venv
+        run: |
+          python -m venv /tmp/wheelenv
+          /tmp/wheelenv/bin/pip install dist/*.whl
+          /tmp/wheelenv/bin/flight-recorder --version
+
   docker:
     runs-on: ubuntu-latest
     steps:
