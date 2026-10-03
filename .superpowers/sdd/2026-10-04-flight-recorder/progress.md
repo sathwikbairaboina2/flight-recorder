@@ -35,3 +35,5 @@ Task 9: complete (tests: uv run pytest tests/test_immutability.py -q -> 2 passed
 Task 10: complete (tests: uv run pytest tests/test_api.py -q -> 5 passed; red seen: module api absent before write)
 Task 11: complete (tests: uv run pytest -q -> 64 passed; ruff check -> All checks passed!; ruff format --check -> 38 files already formatted; smoke on 5320: /api/health ok graph true, /api/threads lists both; process stopped; red seen: module cli absent before write)
 Task 12: complete (tests: pnpm -C ui test -> 3 passed; pnpm -C ui typecheck -> exit 0; red seen: yes, vitest failed to resolve ./api)
+Task 13: complete (tests: pnpm -C ui test -> Tests 15 passed (15); typecheck exit 0; red seen: yes, diff is not a function)
+Ruling: annotated before/after as Json in diff.test.ts date-bug test - TypeScript 7 infers a heterogeneous array literal that is not assignable to Json - none
