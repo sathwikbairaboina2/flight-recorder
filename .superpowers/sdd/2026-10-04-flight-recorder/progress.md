@@ -52,3 +52,14 @@ Task 22: complete (tests: uv run pytest tests/test_compose.py -q -> 3 passed; do
 Task 23: complete (actionlint 1.7.12 via docker -> no output, exit 0; workflow not run, no remote)
 Task 24: complete (bench/bench.py -> api.json source_unchanged true, forks_run 5, fork answer TP1363; pnpm bench:diff -> diff.json state_bytes 1066697, p50 5.4 ms, p95 97.2 ms; pnpm perf -> ui.json 6 open runs + 50 step runs; headline.py prints a line from the results; nothing else heavy was knowingly running but this is a 24-thread desktop machine)
 Ruling: perf.spec waits for the inspector with a locator and treats an absent inspector as not shown yet - the plan's version crashed because StateInspector renders no testid element while loading - step time includes up to one rAF frame of granularity
+Task 25: complete (README with measured headline, docs/DEVDOCS.md, docs/handoff.md written)
+Gate 1: uv run ruff check . -> All checks passed!
+Gate 2: uv run ruff format --check . -> 44 files already formatted
+Gate 3: uv run pytest -q -> 67 passed in 14.38s
+Gate 4: pnpm -C ui typecheck -> exit 0; pnpm -C ui test -> Test Files 13 passed (13), Tests 47 passed (47)
+Gate 5: pnpm -C ui build -> exit 0, src/flight_recorder/static/index.html written (454 bytes)
+Gate 6: pnpm -C ui e2e -> 2 passed (10.2s), port 5322
+Gate 7: uv build ok; wheel has flight_recorder/static/index.html + 2 assets; fresh venv python -m flight_recorder --version -> flight-recorder 0.1.0 (the .exe launcher is blocked by Application Control, see Ruling)
+Gate 8: docker compose build; up -d; curl http://127.0.0.1:5324/api/health -> {"ok":true,"version":"0.1.0","graph":true,"source":"checkpoints.sqlite"}; compose down, 0 flight-recorder containers left
+Gate 9: bench/results/api.json (source_unchanged true), diff.json, ui.json exist; uv run python bench/headline.py --check README.md -> README headline matches bench/results, exit 0
+FINAL: all gates passed (67 pytest, 47 vitest, 2 playwright) except the literal fresh-venv flight-recorder.exe launcher check (blocked by OS policy, module entry point verified instead)
