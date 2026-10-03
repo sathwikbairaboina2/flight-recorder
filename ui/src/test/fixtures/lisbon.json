@@ -1,0 +1,1306 @@
+{
+ "health": {
+  "ok": true,
+  "version": "0.1.0",
+  "graph": true,
+  "source": "checkpoints.sqlite"
+ },
+ "graph": {
+  "nodes": [
+   "__start__",
+   "plan",
+   "tools",
+   "answer",
+   "__end__"
+  ],
+  "edges": [
+   {
+    "source": "__start__",
+    "target": "plan",
+    "conditional": false
+   },
+   {
+    "source": "plan",
+    "target": "tools",
+    "conditional": false
+   },
+   {
+    "source": "tools",
+    "target": "answer",
+    "conditional": false
+   },
+   {
+    "source": "answer",
+    "target": "__end__",
+    "conditional": false
+   }
+  ]
+ },
+ "threads": [
+  {
+   "thread_id": "lisbon-branched",
+   "checkpoint_count": 7,
+   "first_at": "2026-10-03T23:00:19.896649Z",
+   "last_at": "2026-10-03T23:00:20.121131Z",
+   "namespaces": [
+    ""
+   ],
+   "origin": "source",
+   "fork_of": null
+  },
+  {
+   "thread_id": "lisbon-bug",
+   "checkpoint_count": 5,
+   "first_at": "2026-10-03T23:00:19.782935Z",
+   "last_at": "2026-10-03T23:00:19.889605Z",
+   "namespaces": [
+    ""
+   ],
+   "origin": "source",
+   "fork_of": null
+  }
+ ],
+ "checkpoints": {
+  "lisbon-branched": [
+   {
+    "checkpoint_id": "1f1bf7e3-4de5-64db-bfff-8958b29126c9",
+    "parent_id": null,
+    "step": -1,
+    "source": "input",
+    "next": [
+     "__start__"
+    ],
+    "writes_from": [],
+    "created_at": "2026-10-03T23:00:19.896649Z",
+    "state_bytes": 479,
+    "origin": "source"
+   },
+   {
+    "checkpoint_id": "1f1bf7e3-4e8c-69c4-8000-e19604b856d1",
+    "parent_id": "1f1bf7e3-4de5-64db-bfff-8958b29126c9",
+    "step": 0,
+    "source": "loop",
+    "next": [
+     "plan"
+    ],
+    "writes_from": [
+     "__start__"
+    ],
+    "created_at": "2026-10-03T23:00:19.965178Z",
+    "state_bytes": 836,
+    "origin": "source"
+   },
+   {
+    "checkpoint_id": "1f1bf7e3-4e8f-60d9-8001-195b42f132a6",
+    "parent_id": "1f1bf7e3-4e8c-69c4-8000-e19604b856d1",
+    "step": 1,
+    "source": "loop",
+    "next": [
+     "tools"
+    ],
+    "writes_from": [
+     "plan"
+    ],
+    "created_at": "2026-10-03T23:00:19.966178Z",
+    "state_bytes": 1338,
+    "origin": "source"
+   },
+   {
+    "checkpoint_id": "1f1bf7e3-4f19-6a79-8002-42e160765de0",
+    "parent_id": "1f1bf7e3-4e8f-60d9-8001-195b42f132a6",
+    "step": 2,
+    "source": "loop",
+    "next": [
+     "answer"
+    ],
+    "writes_from": [
+     "tools"
+    ],
+    "created_at": "2026-10-03T23:00:20.022949Z",
+    "state_bytes": 2267,
+    "origin": "source"
+   },
+   {
+    "checkpoint_id": "1f1bf7e3-4f34-6f1a-8003-b7665204e1f6",
+    "parent_id": "1f1bf7e3-4f19-6a79-8002-42e160765de0",
+    "step": 3,
+    "source": "loop",
+    "next": [],
+    "writes_from": [
+     "answer"
+    ],
+    "created_at": "2026-10-03T23:00:20.034127Z",
+    "state_bytes": 2529,
+    "origin": "source"
+   },
+   {
+    "checkpoint_id": "1f1bf7e3-4f67-697d-8003-53fdeaf6cdd4",
+    "parent_id": "1f1bf7e3-4f19-6a79-8002-42e160765de0",
+    "step": 3,
+    "source": "update",
+    "next": [
+     "answer"
+    ],
+    "writes_from": [],
+    "created_at": "2026-10-03T23:00:20.054873Z",
+    "state_bytes": 1639,
+    "origin": "source"
+   },
+   {
+    "checkpoint_id": "1f1bf7e3-5009-65af-8004-8d5cea51f3b8",
+    "parent_id": "1f1bf7e3-4f67-697d-8003-53fdeaf6cdd4",
+    "step": 4,
+    "source": "loop",
+    "next": [],
+    "writes_from": [
+     "answer"
+    ],
+    "created_at": "2026-10-03T23:00:20.121131Z",
+    "state_bytes": 2378,
+    "origin": "source"
+   }
+  ],
+  "lisbon-bug": [
+   {
+    "checkpoint_id": "1f1bf7e3-4ccf-6aee-bfff-f7b46ab22485",
+    "parent_id": null,
+    "step": -1,
+    "source": "input",
+    "next": [
+     "__start__"
+    ],
+    "writes_from": [],
+    "created_at": "2026-10-03T23:00:19.782935Z",
+    "state_bytes": 477,
+    "origin": "source"
+   },
+   {
+    "checkpoint_id": "1f1bf7e3-4d7e-6bab-8000-54e861707fea",
+    "parent_id": "1f1bf7e3-4ccf-6aee-bfff-f7b46ab22485",
+    "step": 0,
+    "source": "loop",
+    "next": [
+     "plan"
+    ],
+    "writes_from": [
+     "__start__"
+    ],
+    "created_at": "2026-10-03T23:00:19.854634Z",
+    "state_bytes": 834,
+    "origin": "source"
+   },
+   {
+    "checkpoint_id": "1f1bf7e3-4dae-6ff0-8001-c88cd823fe85",
+    "parent_id": "1f1bf7e3-4d7e-6bab-8000-54e861707fea",
+    "step": 1,
+    "source": "loop",
+    "next": [
+     "tools"
+    ],
+    "writes_from": [
+     "plan"
+    ],
+    "created_at": "2026-10-03T23:00:19.874404Z",
+    "state_bytes": 1332,
+    "origin": "source"
+   },
+   {
+    "checkpoint_id": "1f1bf7e3-4dcf-6395-8002-0169b3302524",
+    "parent_id": "1f1bf7e3-4dae-6ff0-8001-c88cd823fe85",
+    "step": 2,
+    "source": "loop",
+    "next": [
+     "answer"
+    ],
+    "writes_from": [
+     "tools"
+    ],
+    "created_at": "2026-10-03T23:00:19.887605Z",
+    "state_bytes": 2266,
+    "origin": "source"
+   },
+   {
+    "checkpoint_id": "1f1bf7e3-4dd4-61b6-8003-613deda9956f",
+    "parent_id": "1f1bf7e3-4dcf-6395-8002-0169b3302524",
+    "step": 3,
+    "source": "loop",
+    "next": [],
+    "writes_from": [
+     "answer"
+    ],
+    "created_at": "2026-10-03T23:00:19.889605Z",
+    "state_bytes": 2527,
+    "origin": "source"
+   }
+  ]
+ },
+ "states": {
+  "1f1bf7e3-4de5-64db-bfff-8958b29126c9": {
+   "checkpoint_id": "1f1bf7e3-4de5-64db-bfff-8958b29126c9",
+   "values": {
+    "__start__": {
+     "messages": [
+      {
+       "__lc_message__": "human",
+       "content": "Find me the cheapest flight to Lisbon departing after 2026-11-01.",
+       "additional_kwargs": {},
+       "response_metadata": {},
+       "name": null,
+       "id": "human-1"
+      }
+     ],
+     "query": null,
+     "results": []
+    }
+   },
+   "next": [
+    "__start__"
+   ],
+   "pending_writes": [
+    {
+     "task_id": "8def0c83-f856-4c07-1bc5-432cd309c309",
+     "channel": "messages",
+     "value": [
+      {
+       "__lc_message__": "human",
+       "content": "Find me the cheapest flight to Lisbon departing after 2026-11-01.",
+       "additional_kwargs": {},
+       "response_metadata": {},
+       "name": null,
+       "id": "human-1"
+      }
+     ]
+    },
+    {
+     "task_id": "8def0c83-f856-4c07-1bc5-432cd309c309",
+     "channel": "query",
+     "value": null
+    },
+    {
+     "task_id": "8def0c83-f856-4c07-1bc5-432cd309c309",
+     "channel": "results",
+     "value": []
+    },
+    {
+     "task_id": "8def0c83-f856-4c07-1bc5-432cd309c309",
+     "channel": "branch:to:plan",
+     "value": null
+    }
+   ],
+   "metadata": {
+    "source": "input",
+    "step": -1,
+    "parents": {}
+   }
+  },
+  "1f1bf7e3-4e8c-69c4-8000-e19604b856d1": {
+   "checkpoint_id": "1f1bf7e3-4e8c-69c4-8000-e19604b856d1",
+   "values": {
+    "messages": [
+     {
+      "__lc_message__": "human",
+      "content": "Find me the cheapest flight to Lisbon departing after 2026-11-01.",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "human-1"
+     }
+    ],
+    "query": null,
+    "results": [],
+    "branch:to:plan": null
+   },
+   "next": [
+    "plan"
+   ],
+   "pending_writes": [
+    {
+     "task_id": "8a55dfe6-c21b-0073-5a9f-9ddf541aecc5",
+     "channel": "messages",
+     "value": [
+      {
+       "__lc_message__": "ai",
+       "content": "",
+       "additional_kwargs": {},
+       "response_metadata": {},
+       "name": null,
+       "id": "ai-plan",
+       "tool_calls": [
+        {
+         "name": "search_flights",
+         "args": {
+          "destination": "Lisbon",
+          "depart_after": null
+         },
+         "id": "call-1",
+         "type": "tool_call"
+        }
+       ],
+       "invalid_tool_calls": [],
+       "usage_metadata": null
+      }
+     ]
+    },
+    {
+     "task_id": "8a55dfe6-c21b-0073-5a9f-9ddf541aecc5",
+     "channel": "query",
+     "value": {
+      "__pydantic__": "flight_recorder.samples.SearchQuery",
+      "fields": {
+       "destination": "Lisbon",
+       "depart_after": null
+      }
+     }
+    },
+    {
+     "task_id": "8a55dfe6-c21b-0073-5a9f-9ddf541aecc5",
+     "channel": "branch:to:tools",
+     "value": null
+    }
+   ],
+   "metadata": {
+    "source": "loop",
+    "step": 0,
+    "parents": {}
+   }
+  },
+  "1f1bf7e3-4e8f-60d9-8001-195b42f132a6": {
+   "checkpoint_id": "1f1bf7e3-4e8f-60d9-8001-195b42f132a6",
+   "values": {
+    "messages": [
+     {
+      "__lc_message__": "human",
+      "content": "Find me the cheapest flight to Lisbon departing after 2026-11-01.",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "human-1"
+     },
+     {
+      "__lc_message__": "ai",
+      "content": "",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "ai-plan",
+      "tool_calls": [
+       {
+        "name": "search_flights",
+        "args": {
+         "destination": "Lisbon",
+         "depart_after": null
+        },
+        "id": "call-1",
+        "type": "tool_call"
+       }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": null
+     }
+    ],
+    "query": {
+     "__pydantic__": "flight_recorder.samples.SearchQuery",
+     "fields": {
+      "destination": "Lisbon",
+      "depart_after": null
+     }
+    },
+    "results": [],
+    "branch:to:tools": null
+   },
+   "next": [
+    "tools"
+   ],
+   "pending_writes": [
+    {
+     "task_id": "72f962b5-7fb2-677a-6610-e702f96df222",
+     "channel": "messages",
+     "value": [
+      {
+       "__lc_message__": "tool",
+       "content": "[{\"flight\": \"TP1351\", \"destination\": \"Lisbon\", \"date\": \"2026-10-28\", \"price_eur\": 89}, {\"flight\": \"FR8342\", \"destination\": \"Lisbon\", \"date\": \"2026-10-30\", \"price_eur\": 104}, {\"flight\": \"TP1363\", \"destination\": \"Lisbon\", \"date\": \"2026-11-03\", \"price_eur\": 142}, {\"flight\": \"U27701\", \"destination\": \"Lisbon\", \"date\": \"2026-11-05\", \"price_eur\": 157}]",
+       "additional_kwargs": {},
+       "response_metadata": {},
+       "name": null,
+       "id": "tool-1",
+       "tool_call_id": "call-1",
+       "artifact": null,
+       "status": "success"
+      }
+     ]
+    },
+    {
+     "task_id": "72f962b5-7fb2-677a-6610-e702f96df222",
+     "channel": "results",
+     "value": [
+      {
+       "flight": "TP1351",
+       "destination": "Lisbon",
+       "date": "2026-10-28",
+       "price_eur": 89
+      },
+      {
+       "flight": "FR8342",
+       "destination": "Lisbon",
+       "date": "2026-10-30",
+       "price_eur": 104
+      },
+      {
+       "flight": "TP1363",
+       "destination": "Lisbon",
+       "date": "2026-11-03",
+       "price_eur": 142
+      },
+      {
+       "flight": "U27701",
+       "destination": "Lisbon",
+       "date": "2026-11-05",
+       "price_eur": 157
+      }
+     ]
+    },
+    {
+     "task_id": "72f962b5-7fb2-677a-6610-e702f96df222",
+     "channel": "branch:to:answer",
+     "value": null
+    }
+   ],
+   "metadata": {
+    "source": "loop",
+    "step": 1,
+    "parents": {}
+   }
+  },
+  "1f1bf7e3-4f19-6a79-8002-42e160765de0": {
+   "checkpoint_id": "1f1bf7e3-4f19-6a79-8002-42e160765de0",
+   "values": {
+    "messages": [
+     {
+      "__lc_message__": "human",
+      "content": "Find me the cheapest flight to Lisbon departing after 2026-11-01.",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "human-1"
+     },
+     {
+      "__lc_message__": "ai",
+      "content": "",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "ai-plan",
+      "tool_calls": [
+       {
+        "name": "search_flights",
+        "args": {
+         "destination": "Lisbon",
+         "depart_after": null
+        },
+        "id": "call-1",
+        "type": "tool_call"
+       }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": null
+     },
+     {
+      "__lc_message__": "tool",
+      "content": "[{\"flight\": \"TP1351\", \"destination\": \"Lisbon\", \"date\": \"2026-10-28\", \"price_eur\": 89}, {\"flight\": \"FR8342\", \"destination\": \"Lisbon\", \"date\": \"2026-10-30\", \"price_eur\": 104}, {\"flight\": \"TP1363\", \"destination\": \"Lisbon\", \"date\": \"2026-11-03\", \"price_eur\": 142}, {\"flight\": \"U27701\", \"destination\": \"Lisbon\", \"date\": \"2026-11-05\", \"price_eur\": 157}]",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "tool-1",
+      "tool_call_id": "call-1",
+      "artifact": null,
+      "status": "success"
+     }
+    ],
+    "query": {
+     "__pydantic__": "flight_recorder.samples.SearchQuery",
+     "fields": {
+      "destination": "Lisbon",
+      "depart_after": null
+     }
+    },
+    "results": [
+     {
+      "flight": "TP1351",
+      "destination": "Lisbon",
+      "date": "2026-10-28",
+      "price_eur": 89
+     },
+     {
+      "flight": "FR8342",
+      "destination": "Lisbon",
+      "date": "2026-10-30",
+      "price_eur": 104
+     },
+     {
+      "flight": "TP1363",
+      "destination": "Lisbon",
+      "date": "2026-11-03",
+      "price_eur": 142
+     },
+     {
+      "flight": "U27701",
+      "destination": "Lisbon",
+      "date": "2026-11-05",
+      "price_eur": 157
+     }
+    ],
+    "branch:to:answer": null
+   },
+   "next": [
+    "answer"
+   ],
+   "pending_writes": [
+    {
+     "task_id": "1c23d787-05db-696e-8260-2f188e9a1c66",
+     "channel": "messages",
+     "value": [
+      {
+       "__lc_message__": "ai",
+       "content": "Cheapest: TP1351 on 2026-10-28 for EUR 89.",
+       "additional_kwargs": {},
+       "response_metadata": {},
+       "name": null,
+       "id": "ai-answer",
+       "tool_calls": [],
+       "invalid_tool_calls": [],
+       "usage_metadata": null
+      }
+     ]
+    },
+    {
+     "task_id": "8bcf2c87-7613-512c-baad-bbfced1d3a4b",
+     "channel": "messages",
+     "value": [
+      {
+       "__lc_message__": "tool",
+       "content": "[]",
+       "additional_kwargs": {},
+       "response_metadata": {},
+       "name": null,
+       "id": "tool-1",
+       "tool_call_id": "call-1",
+       "artifact": null,
+       "status": "success"
+      }
+     ]
+    },
+    {
+     "task_id": "8bcf2c87-7613-512c-baad-bbfced1d3a4b",
+     "channel": "results",
+     "value": []
+    },
+    {
+     "task_id": "8bcf2c87-7613-512c-baad-bbfced1d3a4b",
+     "channel": "branch:to:answer",
+     "value": null
+    }
+   ],
+   "metadata": {
+    "source": "loop",
+    "step": 2,
+    "parents": {}
+   }
+  },
+  "1f1bf7e3-4f34-6f1a-8003-b7665204e1f6": {
+   "checkpoint_id": "1f1bf7e3-4f34-6f1a-8003-b7665204e1f6",
+   "values": {
+    "messages": [
+     {
+      "__lc_message__": "human",
+      "content": "Find me the cheapest flight to Lisbon departing after 2026-11-01.",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "human-1"
+     },
+     {
+      "__lc_message__": "ai",
+      "content": "",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "ai-plan",
+      "tool_calls": [
+       {
+        "name": "search_flights",
+        "args": {
+         "destination": "Lisbon",
+         "depart_after": null
+        },
+        "id": "call-1",
+        "type": "tool_call"
+       }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": null
+     },
+     {
+      "__lc_message__": "tool",
+      "content": "[{\"flight\": \"TP1351\", \"destination\": \"Lisbon\", \"date\": \"2026-10-28\", \"price_eur\": 89}, {\"flight\": \"FR8342\", \"destination\": \"Lisbon\", \"date\": \"2026-10-30\", \"price_eur\": 104}, {\"flight\": \"TP1363\", \"destination\": \"Lisbon\", \"date\": \"2026-11-03\", \"price_eur\": 142}, {\"flight\": \"U27701\", \"destination\": \"Lisbon\", \"date\": \"2026-11-05\", \"price_eur\": 157}]",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "tool-1",
+      "tool_call_id": "call-1",
+      "artifact": null,
+      "status": "success"
+     },
+     {
+      "__lc_message__": "ai",
+      "content": "Cheapest: TP1351 on 2026-10-28 for EUR 89.",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "ai-answer",
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "usage_metadata": null
+     }
+    ],
+    "query": {
+     "__pydantic__": "flight_recorder.samples.SearchQuery",
+     "fields": {
+      "destination": "Lisbon",
+      "depart_after": null
+     }
+    },
+    "results": [
+     {
+      "flight": "TP1351",
+      "destination": "Lisbon",
+      "date": "2026-10-28",
+      "price_eur": 89
+     },
+     {
+      "flight": "FR8342",
+      "destination": "Lisbon",
+      "date": "2026-10-30",
+      "price_eur": 104
+     },
+     {
+      "flight": "TP1363",
+      "destination": "Lisbon",
+      "date": "2026-11-03",
+      "price_eur": 142
+     },
+     {
+      "flight": "U27701",
+      "destination": "Lisbon",
+      "date": "2026-11-05",
+      "price_eur": 157
+     }
+    ]
+   },
+   "next": [],
+   "pending_writes": [],
+   "metadata": {
+    "source": "loop",
+    "step": 3,
+    "parents": {}
+   }
+  },
+  "1f1bf7e3-4f67-697d-8003-53fdeaf6cdd4": {
+   "checkpoint_id": "1f1bf7e3-4f67-697d-8003-53fdeaf6cdd4",
+   "values": {
+    "messages": [
+     {
+      "__lc_message__": "human",
+      "content": "Find me the cheapest flight to Lisbon departing after 2026-11-01.",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "human-1"
+     },
+     {
+      "__lc_message__": "ai",
+      "content": "",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "ai-plan",
+      "tool_calls": [
+       {
+        "name": "search_flights",
+        "args": {
+         "destination": "Lisbon",
+         "depart_after": null
+        },
+        "id": "call-1",
+        "type": "tool_call"
+       }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": null
+     },
+     {
+      "__lc_message__": "tool",
+      "content": "[]",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "tool-1",
+      "tool_call_id": "call-1",
+      "artifact": null,
+      "status": "success"
+     }
+    ],
+    "query": {
+     "__pydantic__": "flight_recorder.samples.SearchQuery",
+     "fields": {
+      "destination": "Lisbon",
+      "depart_after": null
+     }
+    },
+    "results": [],
+    "branch:to:answer": null
+   },
+   "next": [
+    "answer"
+   ],
+   "pending_writes": [
+    {
+     "task_id": "b069f2ff-5677-886d-d274-5618cd804623",
+     "channel": "messages",
+     "value": [
+      {
+       "__lc_message__": "ai",
+       "content": "No flights found.",
+       "additional_kwargs": {},
+       "response_metadata": {},
+       "name": null,
+       "id": "ai-answer",
+       "tool_calls": [],
+       "invalid_tool_calls": [],
+       "usage_metadata": null
+      }
+     ]
+    }
+   ],
+   "metadata": {
+    "source": "update",
+    "step": 3,
+    "parents": {}
+   }
+  },
+  "1f1bf7e3-5009-65af-8004-8d5cea51f3b8": {
+   "checkpoint_id": "1f1bf7e3-5009-65af-8004-8d5cea51f3b8",
+   "values": {
+    "messages": [
+     {
+      "__lc_message__": "human",
+      "content": "Find me the cheapest flight to Lisbon departing after 2026-11-01.",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "human-1"
+     },
+     {
+      "__lc_message__": "ai",
+      "content": "",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "ai-plan",
+      "tool_calls": [
+       {
+        "name": "search_flights",
+        "args": {
+         "destination": "Lisbon",
+         "depart_after": null
+        },
+        "id": "call-1",
+        "type": "tool_call"
+       }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": null
+     },
+     {
+      "__lc_message__": "tool",
+      "content": "[]",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "tool-1",
+      "tool_call_id": "call-1",
+      "artifact": null,
+      "status": "success"
+     },
+     {
+      "__lc_message__": "ai",
+      "content": "No flights found.",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "ai-answer",
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "usage_metadata": null
+     }
+    ],
+    "query": {
+     "__pydantic__": "flight_recorder.samples.SearchQuery",
+     "fields": {
+      "destination": "Lisbon",
+      "depart_after": null
+     }
+    },
+    "results": []
+   },
+   "next": [],
+   "pending_writes": [],
+   "metadata": {
+    "source": "loop",
+    "step": 4,
+    "parents": {}
+   }
+  },
+  "1f1bf7e3-4ccf-6aee-bfff-f7b46ab22485": {
+   "checkpoint_id": "1f1bf7e3-4ccf-6aee-bfff-f7b46ab22485",
+   "values": {
+    "__start__": {
+     "messages": [
+      {
+       "__lc_message__": "human",
+       "content": "Find me the cheapest flight to Lisbon departing after 2026-11-01.",
+       "additional_kwargs": {},
+       "response_metadata": {},
+       "name": null,
+       "id": "human-1"
+      }
+     ],
+     "query": null,
+     "results": []
+    }
+   },
+   "next": [
+    "__start__"
+   ],
+   "pending_writes": [
+    {
+     "task_id": "ddd8c0e0-24bf-53a5-4c2c-bae1e913aa32",
+     "channel": "messages",
+     "value": [
+      {
+       "__lc_message__": "human",
+       "content": "Find me the cheapest flight to Lisbon departing after 2026-11-01.",
+       "additional_kwargs": {},
+       "response_metadata": {},
+       "name": null,
+       "id": "human-1"
+      }
+     ]
+    },
+    {
+     "task_id": "ddd8c0e0-24bf-53a5-4c2c-bae1e913aa32",
+     "channel": "query",
+     "value": null
+    },
+    {
+     "task_id": "ddd8c0e0-24bf-53a5-4c2c-bae1e913aa32",
+     "channel": "results",
+     "value": []
+    },
+    {
+     "task_id": "ddd8c0e0-24bf-53a5-4c2c-bae1e913aa32",
+     "channel": "branch:to:plan",
+     "value": null
+    }
+   ],
+   "metadata": {
+    "source": "input",
+    "step": -1,
+    "parents": {}
+   }
+  },
+  "1f1bf7e3-4d7e-6bab-8000-54e861707fea": {
+   "checkpoint_id": "1f1bf7e3-4d7e-6bab-8000-54e861707fea",
+   "values": {
+    "messages": [
+     {
+      "__lc_message__": "human",
+      "content": "Find me the cheapest flight to Lisbon departing after 2026-11-01.",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "human-1"
+     }
+    ],
+    "query": null,
+    "results": [],
+    "branch:to:plan": null
+   },
+   "next": [
+    "plan"
+   ],
+   "pending_writes": [
+    {
+     "task_id": "a59b469d-fe8c-05b1-d711-258c796b7576",
+     "channel": "messages",
+     "value": [
+      {
+       "__lc_message__": "ai",
+       "content": "",
+       "additional_kwargs": {},
+       "response_metadata": {},
+       "name": null,
+       "id": "ai-plan",
+       "tool_calls": [
+        {
+         "name": "search_flights",
+         "args": {
+          "destination": "Lisbon",
+          "depart_after": null
+         },
+         "id": "call-1",
+         "type": "tool_call"
+        }
+       ],
+       "invalid_tool_calls": [],
+       "usage_metadata": null
+      }
+     ]
+    },
+    {
+     "task_id": "a59b469d-fe8c-05b1-d711-258c796b7576",
+     "channel": "query",
+     "value": {
+      "__pydantic__": "flight_recorder.samples.SearchQuery",
+      "fields": {
+       "destination": "Lisbon",
+       "depart_after": null
+      }
+     }
+    },
+    {
+     "task_id": "a59b469d-fe8c-05b1-d711-258c796b7576",
+     "channel": "branch:to:tools",
+     "value": null
+    }
+   ],
+   "metadata": {
+    "source": "loop",
+    "step": 0,
+    "parents": {}
+   }
+  },
+  "1f1bf7e3-4dae-6ff0-8001-c88cd823fe85": {
+   "checkpoint_id": "1f1bf7e3-4dae-6ff0-8001-c88cd823fe85",
+   "values": {
+    "messages": [
+     {
+      "__lc_message__": "human",
+      "content": "Find me the cheapest flight to Lisbon departing after 2026-11-01.",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "human-1"
+     },
+     {
+      "__lc_message__": "ai",
+      "content": "",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "ai-plan",
+      "tool_calls": [
+       {
+        "name": "search_flights",
+        "args": {
+         "destination": "Lisbon",
+         "depart_after": null
+        },
+        "id": "call-1",
+        "type": "tool_call"
+       }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": null
+     }
+    ],
+    "query": {
+     "__pydantic__": "flight_recorder.samples.SearchQuery",
+     "fields": {
+      "destination": "Lisbon",
+      "depart_after": null
+     }
+    },
+    "results": [],
+    "branch:to:tools": null
+   },
+   "next": [
+    "tools"
+   ],
+   "pending_writes": [
+    {
+     "task_id": "3e92ac63-e6ab-0d38-98ed-4cd2b1be684a",
+     "channel": "messages",
+     "value": [
+      {
+       "__lc_message__": "tool",
+       "content": "[{\"flight\": \"TP1351\", \"destination\": \"Lisbon\", \"date\": \"2026-10-28\", \"price_eur\": 89}, {\"flight\": \"FR8342\", \"destination\": \"Lisbon\", \"date\": \"2026-10-30\", \"price_eur\": 104}, {\"flight\": \"TP1363\", \"destination\": \"Lisbon\", \"date\": \"2026-11-03\", \"price_eur\": 142}, {\"flight\": \"U27701\", \"destination\": \"Lisbon\", \"date\": \"2026-11-05\", \"price_eur\": 157}]",
+       "additional_kwargs": {},
+       "response_metadata": {},
+       "name": null,
+       "id": "tool-1",
+       "tool_call_id": "call-1",
+       "artifact": null,
+       "status": "success"
+      }
+     ]
+    },
+    {
+     "task_id": "3e92ac63-e6ab-0d38-98ed-4cd2b1be684a",
+     "channel": "results",
+     "value": [
+      {
+       "flight": "TP1351",
+       "destination": "Lisbon",
+       "date": "2026-10-28",
+       "price_eur": 89
+      },
+      {
+       "flight": "FR8342",
+       "destination": "Lisbon",
+       "date": "2026-10-30",
+       "price_eur": 104
+      },
+      {
+       "flight": "TP1363",
+       "destination": "Lisbon",
+       "date": "2026-11-03",
+       "price_eur": 142
+      },
+      {
+       "flight": "U27701",
+       "destination": "Lisbon",
+       "date": "2026-11-05",
+       "price_eur": 157
+      }
+     ]
+    },
+    {
+     "task_id": "3e92ac63-e6ab-0d38-98ed-4cd2b1be684a",
+     "channel": "branch:to:answer",
+     "value": null
+    }
+   ],
+   "metadata": {
+    "source": "loop",
+    "step": 1,
+    "parents": {}
+   }
+  },
+  "1f1bf7e3-4dcf-6395-8002-0169b3302524": {
+   "checkpoint_id": "1f1bf7e3-4dcf-6395-8002-0169b3302524",
+   "values": {
+    "messages": [
+     {
+      "__lc_message__": "human",
+      "content": "Find me the cheapest flight to Lisbon departing after 2026-11-01.",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "human-1"
+     },
+     {
+      "__lc_message__": "ai",
+      "content": "",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "ai-plan",
+      "tool_calls": [
+       {
+        "name": "search_flights",
+        "args": {
+         "destination": "Lisbon",
+         "depart_after": null
+        },
+        "id": "call-1",
+        "type": "tool_call"
+       }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": null
+     },
+     {
+      "__lc_message__": "tool",
+      "content": "[{\"flight\": \"TP1351\", \"destination\": \"Lisbon\", \"date\": \"2026-10-28\", \"price_eur\": 89}, {\"flight\": \"FR8342\", \"destination\": \"Lisbon\", \"date\": \"2026-10-30\", \"price_eur\": 104}, {\"flight\": \"TP1363\", \"destination\": \"Lisbon\", \"date\": \"2026-11-03\", \"price_eur\": 142}, {\"flight\": \"U27701\", \"destination\": \"Lisbon\", \"date\": \"2026-11-05\", \"price_eur\": 157}]",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "tool-1",
+      "tool_call_id": "call-1",
+      "artifact": null,
+      "status": "success"
+     }
+    ],
+    "query": {
+     "__pydantic__": "flight_recorder.samples.SearchQuery",
+     "fields": {
+      "destination": "Lisbon",
+      "depart_after": null
+     }
+    },
+    "results": [
+     {
+      "flight": "TP1351",
+      "destination": "Lisbon",
+      "date": "2026-10-28",
+      "price_eur": 89
+     },
+     {
+      "flight": "FR8342",
+      "destination": "Lisbon",
+      "date": "2026-10-30",
+      "price_eur": 104
+     },
+     {
+      "flight": "TP1363",
+      "destination": "Lisbon",
+      "date": "2026-11-03",
+      "price_eur": 142
+     },
+     {
+      "flight": "U27701",
+      "destination": "Lisbon",
+      "date": "2026-11-05",
+      "price_eur": 157
+     }
+    ],
+    "branch:to:answer": null
+   },
+   "next": [
+    "answer"
+   ],
+   "pending_writes": [
+    {
+     "task_id": "5efac579-3193-431a-771d-b1d123a58fff",
+     "channel": "messages",
+     "value": [
+      {
+       "__lc_message__": "ai",
+       "content": "Cheapest: TP1351 on 2026-10-28 for EUR 89.",
+       "additional_kwargs": {},
+       "response_metadata": {},
+       "name": null,
+       "id": "ai-answer",
+       "tool_calls": [],
+       "invalid_tool_calls": [],
+       "usage_metadata": null
+      }
+     ]
+    }
+   ],
+   "metadata": {
+    "source": "loop",
+    "step": 2,
+    "parents": {}
+   }
+  },
+  "1f1bf7e3-4dd4-61b6-8003-613deda9956f": {
+   "checkpoint_id": "1f1bf7e3-4dd4-61b6-8003-613deda9956f",
+   "values": {
+    "messages": [
+     {
+      "__lc_message__": "human",
+      "content": "Find me the cheapest flight to Lisbon departing after 2026-11-01.",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "human-1"
+     },
+     {
+      "__lc_message__": "ai",
+      "content": "",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "ai-plan",
+      "tool_calls": [
+       {
+        "name": "search_flights",
+        "args": {
+         "destination": "Lisbon",
+         "depart_after": null
+        },
+        "id": "call-1",
+        "type": "tool_call"
+       }
+      ],
+      "invalid_tool_calls": [],
+      "usage_metadata": null
+     },
+     {
+      "__lc_message__": "tool",
+      "content": "[{\"flight\": \"TP1351\", \"destination\": \"Lisbon\", \"date\": \"2026-10-28\", \"price_eur\": 89}, {\"flight\": \"FR8342\", \"destination\": \"Lisbon\", \"date\": \"2026-10-30\", \"price_eur\": 104}, {\"flight\": \"TP1363\", \"destination\": \"Lisbon\", \"date\": \"2026-11-03\", \"price_eur\": 142}, {\"flight\": \"U27701\", \"destination\": \"Lisbon\", \"date\": \"2026-11-05\", \"price_eur\": 157}]",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "tool-1",
+      "tool_call_id": "call-1",
+      "artifact": null,
+      "status": "success"
+     },
+     {
+      "__lc_message__": "ai",
+      "content": "Cheapest: TP1351 on 2026-10-28 for EUR 89.",
+      "additional_kwargs": {},
+      "response_metadata": {},
+      "name": null,
+      "id": "ai-answer",
+      "tool_calls": [],
+      "invalid_tool_calls": [],
+      "usage_metadata": null
+     }
+    ],
+    "query": {
+     "__pydantic__": "flight_recorder.samples.SearchQuery",
+     "fields": {
+      "destination": "Lisbon",
+      "depart_after": null
+     }
+    },
+    "results": [
+     {
+      "flight": "TP1351",
+      "destination": "Lisbon",
+      "date": "2026-10-28",
+      "price_eur": 89
+     },
+     {
+      "flight": "FR8342",
+      "destination": "Lisbon",
+      "date": "2026-10-30",
+      "price_eur": 104
+     },
+     {
+      "flight": "TP1363",
+      "destination": "Lisbon",
+      "date": "2026-11-03",
+      "price_eur": 142
+     },
+     {
+      "flight": "U27701",
+      "destination": "Lisbon",
+      "date": "2026-11-05",
+      "price_eur": 157
+     }
+    ]
+   },
+   "next": [],
+   "pending_writes": [],
+   "metadata": {
+    "source": "loop",
+    "step": 3,
+    "parents": {}
+   }
+  }
+ }
+}

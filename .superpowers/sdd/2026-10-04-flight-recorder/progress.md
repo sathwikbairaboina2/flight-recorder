@@ -44,3 +44,4 @@ Ruling: stubbed getBoundingClientRect, offsetHeight and offsetWidth in ui/src/te
 Task 16: complete (tests: pnpm -C ui test -> 10 files, 36 tests passed; typecheck clean; red seen: yes, component missing)
 Task 17: complete (tests: pnpm -C ui test -> DiffPanel 3 tests pass; run total 12 files 42 tests; red seen: yes, components missing)
 Task 18: complete (tests: pnpm -C ui test -> ForkEditor 3 tests pass; run total 12 files 42 tests, typecheck clean; red seen: yes)
+Task 19: complete (tests: pnpm -C ui test -> 13 files, 47 tests passed; typecheck clean; fixtures via uv run python scripts/capture_fixtures.py; red seen: yes, 5 App tests failed against placeholder)
