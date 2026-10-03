@@ -195,6 +195,11 @@ export function App() {
         </section>
         <section className="pane" aria-label="Timeline">
           <h2 className="pane-title">Timeline</h2>
+          <select className="thread-select" aria-label="Thread" value={threadId ?? ''} onChange={(e) => openThread(e.target.value, null)}>
+            {threads.map((t) => (
+              <option key={t.thread_id} value={t.thread_id}>{t.thread_id}</option>
+            ))}
+          </select>
           {loadError ? <div className="error" role="alert">{loadError}</div> : null}
           {current ? (
             <div className="timeline-wrap">
