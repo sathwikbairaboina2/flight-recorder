@@ -1,0 +1,12 @@
+{
+  "machine": {
+    "platform": "Windows_NT 10.0.26200",
+    "cpu": "AMD Ryzen 9 7900X 12-Core Processor            ",
+    "node": "v24.18.0"
+  },
+  "state_bytes": 1066697,
+  "ops": 22,
+  "runs": 30,
+  "diff_p50_ms": 5.4,
+  "diff_p95_ms": 97.2
+}

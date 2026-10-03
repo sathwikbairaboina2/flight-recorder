@@ -1,0 +1,32 @@
+{
+  "machine": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 25 Model 97 Stepping 2, AuthenticAMD",
+    "cpu_count": 24,
+    "python": "3.12.10",
+    "langgraph": "1.2.12"
+  },
+  "checkpoints": 10000,
+  "fixture_generation_s": 23.9,
+  "source_db_mb": 38.1,
+  "index_cold_ms": 1041.8,
+  "index_warm_p50_ms": 61.0,
+  "index_warm_p95_ms": 110.0,
+  "index_payload_kb": 2489.1,
+  "state_p50_ms": 9.2,
+  "state_p95_ms": 15.2,
+  "fork_roundtrip_p50_ms": 103.5,
+  "fork_server_p50_ms": 91.4,
+  "fork_answers": [
+    "Cheapest: TP1363 on 2026-11-03 for EUR 142."
+  ],
+  "forks_run": 5,
+  "source_files_before": [
+    "checkpoints.sqlite"
+  ],
+  "source_files_after": [
+    "checkpoints.sqlite"
+  ],
+  "source_unchanged": true,
+  "measured_at": "2026-10-04T04:41:37+0530"
+}

@@ -1,0 +1,21 @@
+{
+  "machine": {
+    "platform": "Windows_NT 10.0.26200",
+    "cpu": "AMD Ryzen 9 7900X 12-Core Processor            ",
+    "browser": "chromium 153.0.8010.12"
+  },
+  "checkpoints": 10000,
+  "open_cold_ms": 1911.8,
+  "open_warm_median_ms": 372.3,
+  "open_runs": [
+    1912,
+    372,
+    298,
+    411,
+    317,
+    428
+  ],
+  "step_median_ms": 33.1,
+  "step_p95_ms": 52.4,
+  "step_runs": 50
+}
