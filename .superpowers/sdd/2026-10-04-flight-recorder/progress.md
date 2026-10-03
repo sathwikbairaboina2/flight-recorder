@@ -41,3 +41,4 @@ Task 14: complete (tests: pnpm -C ui test -> Tests 27 passed (27), 7 files; type
 Ruling: design direction 'flight data recorder' per plan (dark first, single accent #ff5f1f, monospace data, CSS custom properties, no external fonts or icon packages) - design-taste-frontend loaded but scoped to landing pages; this is a dense dev tool so the plan's decided direction wins and the skill's dial/density/em-dash/no-icon-hand-roll rules were applied where they fit - none
 Task 15: complete (tests: pnpm -C ui test -> 9 files, 32 tests passed; typecheck clean; red seen: yes, components missing then rows not rendered in jsdom)
 Ruling: stubbed getBoundingClientRect, offsetHeight and offsetWidth in ui/src/test/setup.ts - jsdom measures 0x0 so TanStack Virtual rendered no rows (the plan anticipated this) - tests do not exercise real layout; e2e covers that
+Task 16: complete (tests: pnpm -C ui test -> 10 files, 36 tests passed; typecheck clean; red seen: yes, component missing)
