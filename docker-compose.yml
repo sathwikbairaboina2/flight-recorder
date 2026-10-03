@@ -1,0 +1,8 @@
+name: flight-recorder
+services:
+  demo:
+    build: .
+    image: flight-recorder:dev
+    container_name: flight-recorder-demo
+    ports:
+      - "127.0.0.1:5324:5320"
