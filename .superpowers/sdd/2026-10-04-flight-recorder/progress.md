@@ -29,3 +29,4 @@ Task 3: complete (tests: uv run pytest tests/test_snapshot.py -q -> 5 passed; re
 Task 4: complete (tests: uv run pytest tests/test_bridge.py -q -> 8 passed; red seen: yes in effect, modules did not exist before the files were written)
 Task 5: complete (tests: uv run pytest tests/test_index.py -q -> 8 passed; red seen: in effect, module absent before write)
 Task 6: complete (tests: uv run pytest tests/test_reader.py tests/test_decode.py -q -> 7 passed; red seen: yes, collection errors)
+Task 7: complete (tests: uv run pytest tests/test_graph_loader.py -q -> 6 passed; red seen: yes, collection error)
