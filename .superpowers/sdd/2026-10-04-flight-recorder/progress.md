@@ -32,3 +32,4 @@ Task 6: complete (tests: uv run pytest tests/test_reader.py tests/test_decode.py
 Task 7: complete (tests: uv run pytest tests/test_graph_loader.py -q -> 6 passed; red seen: yes, collection error)
 Task 8: complete (tests: uv run pytest tests/test_fork.py -q -> 7 passed; red seen: module fork absent before write)
 Task 9: complete (tests: uv run pytest tests/test_immutability.py -q -> 2 passed; red seen: yes, with Snapshot.path = source, test_live_writer_with_uncheckpointed_wal failed on dir_fingerprint mismatch, then reverted)
+Task 10: complete (tests: uv run pytest tests/test_api.py -q -> 5 passed; red seen: module api absent before write)
