@@ -30,3 +30,4 @@ Task 4: complete (tests: uv run pytest tests/test_bridge.py -q -> 8 passed; red 
 Task 5: complete (tests: uv run pytest tests/test_index.py -q -> 8 passed; red seen: in effect, module absent before write)
 Task 6: complete (tests: uv run pytest tests/test_reader.py tests/test_decode.py -q -> 7 passed; red seen: yes, collection errors)
 Task 7: complete (tests: uv run pytest tests/test_graph_loader.py -q -> 6 passed; red seen: yes, collection error)
+Task 8: complete (tests: uv run pytest tests/test_fork.py -q -> 7 passed; red seen: module fork absent before write)
