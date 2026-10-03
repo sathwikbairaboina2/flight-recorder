@@ -23,3 +23,4 @@ Ruling: default port 5320 (session owns 5320-5329) instead of the design doc's 7
 Ruling: the index reads the SqliteSaver table with SQL instead of the checkpointer API - 10x faster on 10k checkpoints - schema coupling, guarded by check_schema (ADR 0003)
 Ruling: forks copy only the ancestor chain into an ephemeral scratch db - clean slate per session - forks lost on exit unless --scratch (ADR 0005)
 Ruling: ledger is tracked in git - matches co-author - none
+Task 1: complete (tests: uv run pytest -q -> 1 passed; ruff check -> All checks passed!; red seen: n/a scaffold)
