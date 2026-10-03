@@ -38,3 +38,6 @@ Task 12: complete (tests: pnpm -C ui test -> 3 passed; pnpm -C ui typecheck -> e
 Task 13: complete (tests: pnpm -C ui test -> Tests 15 passed (15); typecheck exit 0; red seen: yes, diff is not a function)
 Ruling: annotated before/after as Json in diff.test.ts date-bug test - TypeScript 7 infers a heterogeneous array literal that is not assignable to Json - none
 Task 14: complete (tests: pnpm -C ui test -> Tests 27 passed (27), 7 files; typecheck no errors; red seen: yes, 4 files failed to import)
+Ruling: design direction 'flight data recorder' per plan (dark first, single accent #ff5f1f, monospace data, CSS custom properties, no external fonts or icon packages) - design-taste-frontend loaded but scoped to landing pages; this is a dense dev tool so the plan's decided direction wins and the skill's dial/density/em-dash/no-icon-hand-roll rules were applied where they fit - none
+Task 15: complete (tests: pnpm -C ui test -> 9 files, 32 tests passed; typecheck clean; red seen: yes, components missing then rows not rendered in jsdom)
+Ruling: stubbed getBoundingClientRect, offsetHeight and offsetWidth in ui/src/test/setup.ts - jsdom measures 0x0 so TanStack Virtual rendered no rows (the plan anticipated this) - tests do not exercise real layout; e2e covers that
