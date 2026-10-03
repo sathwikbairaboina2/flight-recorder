@@ -116,3 +116,23 @@ summary { cursor: pointer; color: var(--muted); }
 .msg-id { color: var(--muted); font-size: var(--size-chip); }
 .msg-content { margin-top: 4px; white-space: pre-wrap; word-break: break-word; }
 .tool-call { margin-top: 4px; }
+
+/* diff panel */
+.diff-panel { padding: 8px 12px 24px; font-family: var(--font-data); }
+.diff-head { display: flex; justify-content: space-between; gap: 8px; padding: 6px 0 10px; }
+.diff-op { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; padding: 6px 0; border-top: 1px solid var(--line); }
+.diff-path { word-break: break-all; }
+.diff-values { display: flex; gap: 6px; flex-wrap: wrap; }
+.diff-before { color: var(--danger); word-break: break-all; }
+.diff-after { color: var(--accent); word-break: break-all; }
+
+/* fork editor */
+.fork-editor { display: flex; flex-direction: column; gap: 8px; padding: 12px; }
+.fork-editor textarea { min-height: 260px; resize: vertical; padding: 8px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); font-family: var(--font-data); font-size: var(--size-data); }
+.fork-editor select { padding: 6px 8px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); font-family: var(--font-data); }
+.fork-editor button, .tabs button { padding: 6px 12px; background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); cursor: pointer; }
+.fork-editor button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); font-weight: 600; }
+.fork-editor button:disabled { opacity: 0.6; cursor: progress; }
+.help { margin: 0; color: var(--muted); font-size: var(--size-chip); }
+.fork-result { display: grid; gap: 8px; padding: 10px; border: 1px solid var(--accent); border-radius: var(--radius); font-family: var(--font-data); }
+.fork-events { display: flex; gap: 4px; flex-wrap: wrap; }

@@ -42,3 +42,5 @@ Ruling: design direction 'flight data recorder' per plan (dark first, single acc
 Task 15: complete (tests: pnpm -C ui test -> 9 files, 32 tests passed; typecheck clean; red seen: yes, components missing then rows not rendered in jsdom)
 Ruling: stubbed getBoundingClientRect, offsetHeight and offsetWidth in ui/src/test/setup.ts - jsdom measures 0x0 so TanStack Virtual rendered no rows (the plan anticipated this) - tests do not exercise real layout; e2e covers that
 Task 16: complete (tests: pnpm -C ui test -> 10 files, 36 tests passed; typecheck clean; red seen: yes, component missing)
+Task 17: complete (tests: pnpm -C ui test -> DiffPanel 3 tests pass; run total 12 files 42 tests; red seen: yes, components missing)
+Task 18: complete (tests: pnpm -C ui test -> ForkEditor 3 tests pass; run total 12 files 42 tests, typecheck clean; red seen: yes)
