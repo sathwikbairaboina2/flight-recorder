@@ -18,6 +18,8 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 from pydantic import BaseModel
 
+from .graph_loader import fork_serde
+
 USER_ASK = "Find me the cheapest flight to Lisbon departing after 2026-11-01."
 FLIGHTS = [
     {"flight": "TP1351", "destination": "Lisbon", "date": "2026-10-28", "price_eur": 89},
@@ -118,8 +120,9 @@ def make_sample_db(path: str | Path, long_checkpoints: int = 0) -> Path:
         Path(str(path) + suffix).unlink(missing_ok=True)
     conn = sqlite3.connect(str(path), check_same_thread=False)
     conn.execute("PRAGMA synchronous=OFF")  # 10x faster fixture writes; sample data only
-    saver = SqliteSaver(conn)
-    app = build().compile(checkpointer=saver)
+    builder = build()
+    saver = SqliteSaver(conn, serde=fork_serde(builder))  # allow SearchQuery explicitly, no LangGraph warning
+    app = builder.compile(checkpointer=saver)
     start = {"messages": [HumanMessage(content=USER_ASK, id="human-1")], "query": None, "results": []}
     app.invoke(start, {"configurable": {"thread_id": "lisbon-bug"}})
     cfg = {"configurable": {"thread_id": "lisbon-branched"}}

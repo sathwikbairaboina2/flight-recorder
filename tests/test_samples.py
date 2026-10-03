@@ -34,3 +34,12 @@ def test_the_bug_and_the_fix():
 def test_regenerating_replaces_the_file(sample_db):
     make_sample_db(sample_db)
     assert _counts(sample_db) == {"lisbon-bug": 5, "lisbon-branched": 7}
+
+
+def test_generating_samples_logs_no_unregistered_type_warning(tmp_path, caplog, monkeypatch):
+    from langgraph.checkpoint.serde import jsonplus
+
+    monkeypatch.setattr(jsonplus, "_warned_unregistered_types", set())  # LangGraph warns once per process
+    with caplog.at_level("WARNING"):
+        make_sample_db(tmp_path / "s.sqlite")
+    assert "unregistered type" not in caplog.text
