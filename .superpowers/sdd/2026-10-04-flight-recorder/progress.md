@@ -34,3 +34,4 @@ Task 8: complete (tests: uv run pytest tests/test_fork.py -q -> 7 passed; red se
 Task 9: complete (tests: uv run pytest tests/test_immutability.py -q -> 2 passed; red seen: yes, with Snapshot.path = source, test_live_writer_with_uncheckpointed_wal failed on dir_fingerprint mismatch, then reverted)
 Task 10: complete (tests: uv run pytest tests/test_api.py -q -> 5 passed; red seen: module api absent before write)
 Task 11: complete (tests: uv run pytest -q -> 64 passed; ruff check -> All checks passed!; ruff format --check -> 38 files already formatted; smoke on 5320: /api/health ok graph true, /api/threads lists both; process stopped; red seen: module cli absent before write)
+Task 12: complete (tests: pnpm -C ui test -> 3 passed; pnpm -C ui typecheck -> exit 0; red seen: yes, vitest failed to resolve ./api)
