@@ -24,3 +24,6 @@ Ruling: the index reads the SqliteSaver table with SQL instead of the checkpoint
 Ruling: forks copy only the ancestor chain into an ephemeral scratch db - clean slate per session - forks lost on exit unless --scratch (ADR 0005)
 Ruling: ledger is tracked in git - matches co-author - none
 Task 1: complete (tests: uv run pytest -q -> 1 passed; ruff check -> All checks passed!; red seen: n/a scaffold)
+Task 2: complete (tests: uv run pytest tests/test_samples.py -q -> 5 passed; red seen: yes, ModuleNotFoundError flight_recorder.samples)
+Task 3: complete (tests: uv run pytest tests/test_snapshot.py -q -> 5 passed; red seen: yes, collection error no module snapshot)
+Task 4: complete (tests: uv run pytest tests/test_bridge.py -q -> 8 passed; red seen: yes in effect, modules did not exist before the files were written)
