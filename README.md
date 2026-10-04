@@ -1,6 +1,15 @@
-# flight-recorder
+# ⏪ flight-recorder
+
+> Time-travel debugger for LangGraph. Step through checkpoints, diff states, edit one and fork the run.
 
 **flight-recorder opens a 10,000-checkpoint LangGraph thread in 372.3 ms, steps between checkpoints in 33.1 ms, and forks any step without changing a byte of the original.**
+
+<!-- readme-header -->
+[![CI](https://github.com/sathwikbairaboina2/flight-recorder/actions/workflows/ci.yml/badge.svg)](https://github.com/sathwikbairaboina2/flight-recorder/actions/workflows/ci.yml) ![License: MIT](https://img.shields.io/badge/license-MIT-blue) ![Python](https://img.shields.io/badge/-Python-555) ![FastAPI](https://img.shields.io/badge/-FastAPI-555) ![React](https://img.shields.io/badge/-React-555)
+
+| Measured | Source |
+|---|---|
+| **10k checkpoints in 372 ms** | `bench/results/ui.json` |
 
 ![Forking the flight-search agent with the date filter restored](docs/img/03-fork.png)
 
